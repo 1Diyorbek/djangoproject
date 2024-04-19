@@ -33,7 +33,7 @@
                         <div class="cat-item position-relative overflow-hidden rounded mb-2">
                             <img class="img-fluid" src="{{ speciality.image.url }}" alt="">
                             <a class="cat-overlay text-white text-decoration-none" href="">
-                                <h4 class="text-white font-weight-medium">{{ speciality.name }}</h4>
+                                <h4 class="text-white font-weight-medium">{{ speciality.title }}</h4>
                                 <span>100 Courses</span>
                             </a>
                         </div>
@@ -70,7 +70,7 @@
                                 <div class="border-top mt-4 pt-4">
                                     <div class="d-flex justify-content-between">
                                         <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>{{ course.rating }}<small>(250)</small></h6>
-                                        <h5 class="m-0">{{ course.price }}</h5>
+                                        <h5 class="m-0">{{ course.price }} {{course.price_type}}</h5>
                                     </div>
                                 </div>
                             </div>
