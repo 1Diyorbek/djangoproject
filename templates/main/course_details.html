@@ -1,0 +1,13 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+    <ul>
+        <li><h3>Nomi: {{course.title}}</h3></li>
+        <li><h3>Tavsif: {{course.description}}</h3></li>
+        <li><h3>Foydalanayotganlar soni: {{course.active_user}}</h3></li>
+        <li><h3>Narxi: {{course.price}}</h3></li>
+        <li><h3>Reytinggi: {{course.rating}}</h3></li><br>
+        <a class="btn btn-primary py-2 px-5 ml-auto d-none d-lg-block" href="{% url 'update_course' id=course_id %}">Update</a><br>
+        <a class="btn btn-primary py-2 px-5 ml-auto d-none d-lg-block" href="{% url 'course' %}">Back</a>
+    </ul>
+{% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from .models import Course, Speciality
 from teacher.models import Teacher
@@ -42,3 +42,33 @@ class AboutPageView(View):
 class ContactPageView(View):
     def get(self, request):
         return render(request, "main/contact.html")
+
+
+class CourseDetailsView(View):
+    def get(self, request, id):
+        course = Course.objects.get(id=id)
+        print(course.title)
+        context = {
+            "course_id": id,
+            "course": course
+        }
+
+        return render(request, "main/course_details.html", context)
+
+
+class UpdateCourseView(View):
+    def get(self, request, id):
+        course = Course.objects.get(id=id)
+        context = {
+            "course": course
+        }
+        return render(request, "main/update_course.html", context)
+
+    def post(self, request, id):
+        course = Course.objects.get(id=id)
+        course.title = request.POST.get('title')
+        course.descripiton = request.POST.get('description')
+        course.price = request.POST.get('price')
+
+        course.save()
+        return redirect("course")

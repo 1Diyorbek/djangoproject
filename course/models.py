@@ -23,7 +23,7 @@ class Course(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     price_type = models.CharField(max_length=10, choices=PriceType.choices, default=PriceType.dollar)
     image = models.ImageField(upload_to="course")
-    rating = models.FloatField()
+    rating = models.FloatField(default=5)
     speciality = models.ManyToManyField(Speciality)
     last_update = models.DateTimeField(auto_now=True)
     create_date = models.DateTimeField(auto_now_add=True)

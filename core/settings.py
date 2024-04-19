@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     # app
     "course",
     "teacher",
+    "user_auth",
 ]
 
 MIDDLEWARE = [

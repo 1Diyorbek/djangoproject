@@ -102,6 +102,7 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav py-0">
+                            {% if user.is_authenticated %}
                             <a href="{% url 'landing' %}" class="nav-item nav-link active">Home</a>
                             <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
                             <a href="{% url 'course' %}" class="nav-item nav-link">Courses</a>
@@ -114,8 +115,30 @@
                                 </div>
                             </div>
                             <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+                            {% else %}
+                            <a href="{% url 'login' %}" class="nav-item nav-link active">Home</a>
+                            <a href="{% url 'login' %}" class="nav-item nav-link">About</a>
+                            <a href="{% url 'login' %}" class="nav-item nav-link">Courses</a>
+                            <a href="{% url 'login' %}" class="nav-item nav-link">Teachers</a>
+                            <div class="nav-item dropdown">
+                                <a href="{% url 'login' %}" class="nav-link dropdown-toggle" data-toggle="dropdown">Blog</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <a href="{% url 'login' %}" class="dropdown-item">Blog List</a>
+                                    <a href="{% url 'login' %}" class="dropdown-item">Blog Detail</a>
+                                </div>
+                            </div>
+                            <a href="{% url 'login' %}" class="nav-item nav-link">Contact</a>
+                            {% endif %}
                         </div>
-                        <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="">Join Now</a>
+                        {% if user.is_authenticated %}
+                        <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="{% url 'login' %}">Sign in</a>
+                        <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="{% url 'logout' %}">Log out</a>
+                        {% else %}
+                        <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="{% url 'login' %}">Sign in</a>
+                        <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="{% url 'register' %}">Sign up</a>
+
+                        {% endif %}
+
                     </div>
                 </nav>
             </div>
