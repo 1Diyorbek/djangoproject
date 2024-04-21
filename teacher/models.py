@@ -13,6 +13,7 @@ class Position(models.Model):
 class Teacher(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
+    slug = models.SlugField(null=False)
     image = models.ImageField(upload_to="teacher")
     twitter = models.URLField(null=True, blank=True)
     facebook = models.URLField(null=True, blank=True)

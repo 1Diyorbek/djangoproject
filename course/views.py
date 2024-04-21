@@ -45,11 +45,10 @@ class ContactPageView(View):
 
 
 class CourseDetailsView(View):
-    def get(self, request, id):
-        course = Course.objects.get(id=id)
-        print(course.title)
+    def get(self, request, slug):
+        course = Course.objects.filter(slug=slug)
         context = {
-            "course_id": id,
+            "course_slug": slug,
             "course": course
         }
 
@@ -57,18 +56,17 @@ class CourseDetailsView(View):
 
 
 class UpdateCourseView(View):
-    def get(self, request, id):
-        course = Course.objects.get(id=id)
+    def get(self, request, slug):
+        course = Course.objects.filter(slug=slug)
         context = {
             "course": course
         }
         return render(request, "main/update_course.html", context)
 
-    def post(self, request, id):
-        course = Course.objects.get(id=id)
+    def post(self, request, slug):
+        course = Course.objects.get(slug=slug)
         course.title = request.POST.get('title')
         course.descripiton = request.POST.get('description')
         course.price = request.POST.get('price')
-
         course.save()
         return redirect("course")

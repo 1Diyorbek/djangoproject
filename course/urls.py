@@ -6,6 +6,6 @@ urlpatterns = [
     path('course/', CoursePageView.as_view(), name="course"),
     path('about/', AboutPageView.as_view(), name="about"),
     path('contact/', ContactPageView.as_view(), name="contact"),
-    path('course-details/<int:id>', CourseDetailsView.as_view(), name="course_details"),
-    path('update-course/<int:id>', UpdateCourseView.as_view(), name="update_course"),
+    path('course-details/<slug:slug>', CourseDetailsView.as_view(), name="course_details"),
+    path('update-course/<slug:slug>', UpdateCourseView.as_view(), name="update_course"),
 ]
